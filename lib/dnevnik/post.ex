@@ -6,6 +6,8 @@ defmodule Dnevnik.Post do
 	create("Welcome to Dnevnik")
   end
   
+  def list, do: File.ls!("#{Config.content_directory}/posts") |> Enum.sort |> Enum.reverse
+    
   def create(title, is_draft \\ false) do
 	case is_draft do
 		true -> "#{Config.content_directory}/drafts"
@@ -57,8 +59,6 @@ defmodule Dnevnik.Post do
 		config: Config.data 
 	}
   end
-  
-  def list, do: File.ls!("#{Config.content_directory}/posts") |> Enum.sort |> Enum.reverse
   
   defp default(title) do
 	
