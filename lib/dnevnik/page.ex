@@ -1,5 +1,5 @@
 defmodule Dnevnik.Page do
-  alias Dnevnik.{Config, Assets, Document, Renderer, Store, Utils.IO}
+  alias Dnevnik.{Config, Assets, Document, Renderer, Store, Utils.IO, Utils.Date}
   
   def init, do: File.mkdir pages_dir()
   
@@ -20,8 +20,10 @@ defmodule Dnevnik.Page do
 	
 	filename = Document.file_name(file_path)
 	path = Document.html_filename(file_path)
+	
 	content = Renderer.render(page_template, page_view_model(content, frontmatter, filename), page_renderer)
 	document = Renderer.render(layout_template, layout_view_model(content, frontmatter, path, filename), layout_renderer)
+	
 	%{ document: document, path: path }
   end  
   
@@ -38,9 +40,9 @@ defmodule Dnevnik.Page do
 	{ 
 	  "title": "#{title}", 
 	  "description": "A new page", 
-	  "created": "#{Dnevnik.Utils.Date.today_formatted}", 
+	  "created": "#{Date.today}", 
 	  "tags": ["page", "new"], 
-	  "slug": "#{Dnevnik.Utils.IO.url_slug_from_title(title)}"
+	  "slug": "#{IO.url_slug_from_title(title)}"
 	}
 
     Welcome to your brand new page.

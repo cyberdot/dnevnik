@@ -14,11 +14,13 @@ defmodule Dnevnik.Tags do
   
   def prepare_tag(tag, posts, store) do
     config = Config.data |> update_config(tag)
-	posts |> Enum.filter(fn(post) -> Enum.any?(post.frontmatter.tags, &(&1 == tag)) end) |> Index.create(store, config)
+	posts 
+		|> Enum.filter(fn(post) -> Enum.any?(post.frontmatter.tags, &(&1 == tag)) end) 
+		|> Index.create(store, config)
   end
   
   defp update_config(config, tag) do
-	Map.update(config, :name, tag, fn _ -> tag end) 
+	Map.update(config, :name, tag, fn _ -> "Tag: #{tag}" end) 
 		|> Map.update(:description, "tagged collection of posts", fn _ -> "tagged collection of posts" end)
 		|> Map.update(:blog_index, "tags/#{tag}.html", fn _ -> "tags/#{tag}.html" end)	
   end

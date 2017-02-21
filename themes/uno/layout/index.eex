@@ -1,0 +1,48 @@
+<% {next_page, next_filename} = @next %>
+<% {prev_page, prev_filename} = @prev %>
+
+<div class="main-post-list">
+	<ol class="post-list">
+	 <%= Enum.map(@content, fn(post) -> %>
+		<li>
+			<h2 class="post-list__post-title post-title">
+				<a href="<%= post.filename %>" title="<%= post.frontmatter.title %>">
+					<%= post.frontmatter.title %>
+				</a>
+			</h2>
+			<p class="excerpt">
+				<%= post.excerpt %>
+				&hellip;
+			</p>
+			<div class="post-list__meta">
+			  <time datetime="<%= post.frontmatter.created %>" class="post-list__meta--date date">
+				Posted <%= post.frontmatter.created %>
+			  </time>&#8226; 
+			  <%= if length(post.frontmatter.tags) > 0 do %>
+			  <span class="post-meta__tags">Tags: 
+				<%= Enum.map(post.frontmatter.tags, fn(tag) -> %>
+					<a href="/tags/<%= tag %>.html"><%= tag %></a> 
+				<% end) %>
+			  </span>
+			  <% end %>
+			</div>
+			<hr class="post-list__divider">
+		</li>
+	   <% end) %>
+	</ol>
+	
+	<hr class="post-list__divider ">
+    <nav class="pagination" role="navigation">
+		<%= if prev_page > 0 do %>
+			<a rel="prev" class="posts newer btn small" href="/<%= prev_filename %>" title="Previous Page">← Newer Posts</a>
+		<% end %>
+		<span class="pagination__page-number">
+			<%= if @current > 1 do %>
+				Page <%= @current %>
+			<% end %>
+		</span>
+		<%= if next_page > 0 do %>
+			<a rel="next" class="posts older btn small" href="/<%= next_filename %>">Older Posts →</a>
+		<% end %>
+	</nav>
+</div>

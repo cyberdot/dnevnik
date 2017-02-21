@@ -1,4 +1,4 @@
-defmodule Mix.Tasks.Dnevnik do
+defmodule Mix.Tasks.D do
   use Anubis
   
   command :setup,   	"Create the scaffolding for the static site", 		Dnevnik.Tasks.Setup.run

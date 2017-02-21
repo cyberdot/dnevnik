@@ -22,6 +22,9 @@ defmodule Dnevnik.Site do
   def clean do
     File.rm_rf "#{Config.content_directory}"
     File.mkdir "#{Config.content_directory}"
+	
+	File.rm_rf "#{Config.public_directory}"
+    File.mkdir "#{Config.public_directory}"
   end
   
   defp copy_root_files do

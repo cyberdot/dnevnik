@@ -1,5 +1,5 @@
 defmodule Dnevnik.Post do
-  alias Dnevnik.{Config, Document, Store, Utils.IO}
+  alias Dnevnik.{Config, Document, Assets, Store, Renderer, Utils.IO, Utils.Date}
     
   def init do
 	File.mkdir "#{Config.content_directory}/posts"
@@ -14,8 +14,48 @@ defmodule Dnevnik.Post do
   end
    
   def prepare(md_file, store) do
-    layouts = Store.get_layouts(store)
-	Store.add_posts(store, [ Document.prepare("#{Config.content_directory}/posts/#{md_file}", layouts.post, layouts.post_layout) ])
+    post = store |> Store.get_layouts |> prepare_page("#{Config.content_directory}/posts/#{md_file}")
+	Store.add_posts(store, [post])
+  end
+  
+  defp prepare_page(layouts, md_file) do
+	{ frontmatter, md_content } =  md_file |> File.read! |> Document.split_into_parts 
+	
+	filename = Document.file_name(md_file)
+	html_path = Document.html_filename(md_file)
+	excerpt = Document.create_excerpt(md_content)
+	
+	{page_layout, page_renderer} = layouts.post
+	{layout_template, layout_renderer} = layouts.post_layout
+	
+	content = Renderer.render(page_layout, [ 
+			config: Config.data, 
+			content: Earmark.to_html(md_content), 
+			frontmatter: frontmatter, 
+			filename: filename, 
+			path: html_path 
+		], page_renderer)
+	
+	view_model = [ 
+		config: Config.data, 
+		js: Assets.js, 
+		css: Assets.css, 
+		content: content, 
+		frontmatter: frontmatter, 
+		filename: filename, 
+		path: html_path 
+	]
+    
+    document = Renderer.render(layout_template, view_model, layout_renderer)
+	%{ 
+		date_created: Date.parse(frontmatter.created), 
+		frontmatter: frontmatter, 
+		document: document, 
+		path: html_path, 
+		filename: filename, 
+		excerpt: excerpt, 
+		config: Config.data 
+	}
   end
   
   def list, do: File.ls!("#{Config.content_directory}/posts") |> Enum.sort |> Enum.reverse
@@ -27,7 +67,7 @@ defmodule Dnevnik.Post do
 	{
 		"title": "#{title}",
 		"description": "A new blog post",
-		"created": "#{Dnevnik.Utils.Date.today_formatted}",
+		"created": "#{Dnevnik.Utils.Date.today}",
 		"tags": ["post", "new"],
 		"slug": "#{IO.url_slug_from_title(title)}"
 	}

@@ -14,7 +14,7 @@ defmodule Dnevnik.Posts do
     end 
 	
 	@spec sort_by_created(sort :: atom) :: (atom -> boolean)
-	defp sort_by_created(:ascending), do: &(&1.frontmatter.created <= &2.frontmatter.created)  
-	defp sort_by_created(:descending), do: &(&1.frontmatter.created >= &2.frontmatter.created) 	
+	defp sort_by_created(:ascending), do: &(Date.to_erl(&1.date_created) <= Date.to_erl(&2.date_created))  
+	defp sort_by_created(:descending), do: &(Date.to_erl(&1.date_created) >= Date.to_erl(&2.date_created)) 	
   
 end

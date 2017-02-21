@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <meta charset="utf-8">
+  <base href="<%= @config.url %>" />
+  <meta name="viewport" content="width=device-width initial-scale=1" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+  <title><%= @config.name %></title>
+  <meta name="description" content="<%= @config.description %>">
+  <meta name="author" content="<%= @config.author %>">
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="<%= @config.name %>">
+  <meta name="twitter:description" content="<%= @config.description %>">
+  
+
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="<%= @config.name %>">
+  <meta property="og:description" content="<%= @config.description %>">
+  
+
+  <link rel="apple-touch-icon" sizes="57x57" href="assets/img/favicons/apple-touch-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="60x60" href="assets/img/favicons/apple-touch-icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="assets/img/favicons/apple-touch-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="assets/img/favicons/apple-touch-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="assets/img/favicons/apple-touch-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="assets/img/favicons/apple-touch-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="assets/img/favicons/apple-touch-icon-144x144.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="assets/img/favicons/apple-touch-icon-152x152.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/img/favicons/apple-touch-icon-180x180.png">
+  <link rel="icon" type="image/png" href="assets/img/favicons/favicon-32x32.png" sizes="32x32">
+  <link rel="icon" type="image/png" href="assets/img/favicons/favicon-194x194.png" sizes="194x194">
+  <link rel="icon" type="image/png" href="assets/img/favicons/favicon-96x96.png" sizes="96x96">
+  <link rel="icon" type="image/png" href="assets/img/favicons/android-chrome-192x192.png" sizes="192x192">
+  <link rel="icon" type="image/png" href="assets/img/favicons/favicon-16x16.png" sizes="16x16">
+  <link rel="manifest" href="assets/img/favicons/manifest.json">
+  <link rel="shortcut icon" href="assets/img/favicons/favicon.ico">
+  <meta name="msapplication-TileColor" content="#ffc40d">
+  <meta name="msapplication-TileImage" content="assets/img/favicons/mstile-144x144.png">
+  <meta name="theme-color" content="#ffffff">
+
+  <%= @css %>
+  <link rel="canonical" href="<%= @config.url %>">
+  <link rel="alternate" type="application/rss+xml" title="<%= @config.name %>" href="/blog.rss">
+</head>
+
+<body>
+	<span class="mobile btn-mobile-menu">
+		<i class="icon icon-list btn-mobile-menu__icon"></i>
+		<i class="icon icon-x-circle btn-mobile-close__icon hidden"></i>
+	</span>
+
+	<header class="panel-cover" >
+		<div class="panel-main">
+			<div class="panel-main__inner panel-inverted">
+			<div class="panel-main__content">
+        
+				<img src="assets/img/logo.png" class="user-image" alt="My Profile Photo">
+				<h1 class="panel-cover__title panel-title">
+					[<a href="/" title="link to home"><%= @config.author %></a>@<a href="https://www.github.com/cyberdot" title="cyberdot" target="_blank"><%= @config.author %></a>]
+				</h1>
+
+				<hr class="panel-cover__divider">
+				<p class="panel-cover__description">
+					<center><%= @config.author_description %></center> 
+				</p>
+				<hr class="panel-cover__divider panel-cover__divider--secondary">
+
+				<div class="navigation-wrapper">
+					<nav class="cover-navigation cover-navigation--primary">
+						<ul class="navigation">
+						  <li class="navigation__item"><a href="/#blog" title="link to <%= @config.name %> blog" class="blog-button">Blog</a></li>
+						</ul>
+					</nav>
+
+					<nav class="cover-navigation navigation--social">
+						<ul class="navigation">					
+							<!-- Twitter -->
+							  <li class="navigation__item">
+								<a href="http://twitter.com/{twitter_username}" title="{twitter_username} on Twitter" target="_blank">
+								  <i class="icon icon-social-twitter"></i>
+								  <span class="label">Twitter</span>
+								</a>
+							  </li>
+							  
+							  <!-- LinkedIn -->
+							  <li class="navigation__item">
+								<a href="https://www.linkedin.com/in/{ln_username}" title="{ln_username} on LinkedIn" target="_blank">
+									<i class="icon icon-social-linkedin"></i>
+									<span class="label">LinkedIn</span>
+								</a>
+							  </li>
+							  
+							  <!-- GitHub -->
+							  <li class="navigation__item">
+								<a href="https://www.github.com/{github_username}" title="{github_username} on GitHub" target="_blank">
+									<i class="icon icon-social-github"></i>
+									<span class="label">GitHub</span>
+								</a>
+							  </li>
+							  
+							  <!-- Email -->
+							  <li class="navigation__item">
+								<a href="mailto:{user_email}" title="Email {user_email}" target="_blank">
+									<i class="icon icon-mail"></i>
+									<span class="label">Email</span>
+								</a>
+							  </li>
+							  
+							  <!-- RSS -->
+							  <li class="navigation__item">
+								<a href="/blog.rss" title="Subscribe" target="_blank">
+									<i class="icon icon-rss"></i>
+									<span class="label">RSS</span>
+								</a>
+							  </li>
+			  
+						</ul>
+					</nav>
+				</div>
+			</div>
+		</div>
+		<div class="panel-cover--overlay"></div>
+  </div>
+</header>
+
+<div class="content-wrapper">
+	<div class="content-wrapper__inner">
+		<%= @content %>
+	</div>
+
+
+<footer class="footer">
+  <span class="footer__copyright">&copy; 2017 <%= @config.name %>. All rights reserved.</span>
+</footer> 
+
+</div>
+
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<%= @js %>
+
+</body>
+</html>
