@@ -1,0 +1,20 @@
+<%= Enum.map(@content, fn(post) -> %>
+
+	<div class="post">
+		<a class="post-link" href="<%= post.filename %>">
+			<p class="post-meta left"><%= post.frontmatter.created %></p>
+			<p class="post-author right"><%= @config.author %></p>
+			<div class="clearfix"></div>
+			<h3 class="h2 post-title"><%= post.frontmatter.title %></h3>
+			<p class="post-summary"><%= post.excerpt %></p>
+		</a>
+		<p class="post-meta">Tags:&nbsp;
+			<%= if length(post.frontmatter.tags) > 0 do %>			    
+				<%= Enum.map(post.frontmatter.tags, fn(tag) -> %>
+					<a href="/tags/<%= tag %>.html"><%= tag %>,</a> 
+				<% end) %>			
+			<% end %>
+		</p>
+	</div>
+
+<% end) %>

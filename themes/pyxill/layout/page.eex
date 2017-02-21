@@ -1,0 +1,7 @@
+<div class="post-header mb2">
+	<h1 class="py2"><%= @frontmatter.title %></h1>
+</div>
+<article class="post-content">
+	<%= @content %>
+</article>
+			

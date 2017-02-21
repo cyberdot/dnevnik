@@ -1,0 +1,55 @@
+<main id="content" class="content" role="main">
+<article class="post post-template  <%= @frontmatter.tags %>">
+	<header class="post-header">
+        <h1 class="post-title"><%= @frontmatter.title %></h1>
+        <section class="post-meta">
+            <time class="post-date"><%= @frontmatter.created %></time>  
+			<%= if length(@frontmatter.tags) > 0 do %>
+			on
+				<%= Enum.map(@frontmatter.tags, fn(tag) -> %>
+					<a href="/tags/<%= tag %>.html"><%= tag %></a> 
+				<% end) %>			
+			<% end %>	
+        </section>
+     </header>
+	 
+	<section class="post-content">
+		<%= @content %>
+	</section>
+	<footer class="post-footer">	
+		<figure class="author-image">
+			<a class="img" href="<%= @config.author %>.html" style="background-image: url(/assets/img/logo.png)"><span class="hidden">Author's Picture</span></a>
+		</figure>
+
+		<section class="author">
+			<h4><a href="<%= @config.author %>.html"><%= @config.author %></a></h4>
+
+			<p><%= @config.author_description %></p>
+			<div class="author-meta">
+				<span class="author-location icon-location"><%= @config.author_location %></span>
+				<span class="author-link icon-link"><a href="<%= @config.url %>"><%= @config.url %></a></span>
+			</div>
+		</section>
+
+        <section class="share">
+			<h4>Share this post</h4>
+			<a class="icon-twitter" href="https://twitter.com/intent/tweet?text=<%= URI.encode(@frontmatter.title) %>&amp;url=<%= @config.url %>/<%= @frontmatter.slug %>" 
+			onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+				<span class="hidden">Twitter</span>
+			</a>
+			<a class="icon-facebook" href="https://www.facebook.com/sharer/sharer.php?u=<%= @config.url %>/<%= @frontmatter.slug %>" 
+			onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+				<span class="hidden">Facebook</span>
+			</a>
+			<a class="icon-google-plus" href="https://plus.google.com/share?url=<%= @config.url %>/<%= @frontmatter.slug %>" 
+			onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+				<span class="hidden">Google+</span>
+			</a>
+		</section>		
+
+    </footer>
+	<%= if @config.enable_disqus_comments do %>
+		<%= Dnevnik.DisqusComments.render(@path, @config.disqus_url) %>	 
+	<% end %>
+</article>
+</main>

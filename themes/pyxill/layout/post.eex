@@ -1,0 +1,18 @@
+<div class="post-header mb2">
+	<h1 class="py2"><%= @frontmatter.title %></h1>
+	<span class="post-meta"><%= @frontmatter.created %> by <%= @config.author %></span><br>
+</div>
+<article class="post-content"> 
+	<%= @content %>
+</article>
+<p class="post-meta">Tags:&nbsp; 
+	<%= if length(@frontmatter.tags) > 0 do %>			    
+		<%= Enum.map(@frontmatter.tags, fn(tag) -> %>
+			<a href="/tags/<%= tag %>.html"><%= tag %>,</a> 
+		<% end) %>					
+	<% end %>
+</p>
+
+<%= if @config.enable_disqus_comments do %>
+	<%= Dnevnik.DisqusComments.render(@path, @config.disqus_url) %>	 
+<% end %>

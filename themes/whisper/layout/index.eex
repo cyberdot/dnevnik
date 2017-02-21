@@ -1,0 +1,61 @@
+<% {next_page, next_filename} = @next %>
+<% {prev_page, prev_filename} = @prev %>
+
+<div class="extra-pagination inner">
+    <nav class="pagination" role="navigation">
+	<%= if prev_page > 0 do %>
+        <a class="newer-posts" href="/<%= prev_filename %>"><span aria-hidden="true">&larr;</span> Newer Posts</a>
+	<% end %>
+	<span class="page-number">
+		<%= if @current > 1 do %>
+			Page <%= @current %>
+		<% end %>
+	</span>
+	<%= if next_page > 0 do %>
+		<a class="older-posts" href="/<%= next_filename %>">Older Posts <span aria-hidden="true">&rarr;</span></a>
+	<% end %>
+	</nav>
+</div>
+
+
+ <%= Enum.map(@content, fn(post) -> %>
+   
+	<article class="post <%= post.frontmatter.tags %> featured">
+		<header class="post-header">
+			<h2 class="post-title"><a href="<%= post.filename %>"><%= post.frontmatter.title %></a></h2>
+		</header>
+		<section class="post-excerpt">
+			<p><%= post.excerpt %><a class="read-more" href="<%= post.filename %>">&raquo;</a></p>
+		</section>
+		<footer class="post-meta">
+			<img class="author-thumb" src="/assets/img/logo.png" alt="<%= @config.author %>" nopin="nopin" />
+			<a href="<%= @config.author %>.html"><%= @config.author %></a>
+			<%= if length(post.frontmatter.tags) > 0 do %>
+			    on
+				<%= Enum.map(post.frontmatter.tags, fn(tag) -> %>
+					<a href="/tags/<%= tag %>.html"><%= tag %></a> 
+				<% end) %>			
+			<% end %>			
+			
+			<time class="post-date" datetime="<%= post.frontmatter.created %>"> <%= post.frontmatter.created %></time> 
+		</footer>
+	</article>
+ 
+  
+<% end) %>
+
+<div class="extra-pagination inner">
+    <nav class="pagination" role="navigation">
+	<%= if prev_page > 0 do %>
+        <a class="newer-posts" href="/<%= prev_filename %>"><span aria-hidden="true">&larr;</span> Newer Posts</a>
+	<% end %>
+	<span class="page-number">
+		<%= if @current > 1 do %>
+			Page <%= @current %>
+		<% end %>
+	</span>
+	<%= if next_page > 0 do %>
+		<a class="older-posts" href="/<%= next_filename %>">Older Posts <span aria-hidden="true">&rarr;</span></a>
+	<% end %>
+	</nav>
+</div>

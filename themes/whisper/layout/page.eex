@@ -1,0 +1,10 @@
+<article class="post post-template  <%= @frontmatter.tags %>">
+	<header class="post-header">
+        <h1 class="post-title"><%= @frontmatter.title %></h1>        
+     </header>
+	 
+	<section class="post-content">
+		<%= @content %>
+	</section>
+	
+</article>

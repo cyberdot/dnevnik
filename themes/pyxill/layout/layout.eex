@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title><%= @frontmatter.title %></title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="<%= @config.description %>">
+	<meta name="author" content="<%= @config.author %>">
+	<meta name="keywords" content="">
+	<link rel="canonical" href="<%= @path %>">
+	<%= @css %>	
+</head>
+<body>
+	<div class="site-wrap">
+		<header class="site-header px2 px-responsive">
+			<div class="mt2 wrap">
+				<div class="measure">
+					<a href="<%= @filename %>" class="site-title"><%= @frontmatter.title %></a>
+					<nav class="site-nav right">
+						<a href="about.html">About</a>
+						<a href="tags.html">Tags</a>
+						<a href="mailto:contact@bla.com">Contact</a>
+					</nav>
+					<div class="clearfix"></div>
+				</div>
+			</div>
+		</header>
+		<div class="post p2 p-responsive wrap" role="main">
+			<div class="measure">
+				<%= @content %>
+			</div>
+		</div>
+	</div>
+	<footer class="footer">
+		<div class="p2 wrap">
+			<div class="measure mt1 center">
+				<nav class="social-icons icons">
+					<a class="fa fa-rss rss" href="blog.rss"></a>
+				</nav>
+				<small> 
+					Copyright &#169; 2017<br /> Powered by <a href="http://github.com/cyberdot/dnevnik" target="_blank">Dnevnik</a> &amp; Pixyll
+				</small>
+			</div>
+		</div>
+	</footer>
+	<%= @js %>
+	<script>hljs.initHighlightingOnLoad();</script>
+</body>
+</html>
