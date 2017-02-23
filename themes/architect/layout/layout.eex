@@ -10,14 +10,14 @@
     <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
 
-    <title><%= @content.name %> </title>
+    <title><%= @config.name %> </title>
   </head>
 
   <body>
     <header>
       <div class="inner">
-        <h1> <%= @content.name %> </h1>
-        <h2><%= @content.description %></h2>
+        <h1> <%= @config.name %> </h1>
+        <h2><%= @config.description %></h2>
         <a href="https://github.com/cyberdot/dnevnik" class="button">
 			<small>View project on</small> GitHub
 		</a>

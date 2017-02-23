@@ -1,5 +1,5 @@
 <div class="post">
 	<h1><%= @frontmatter.title%></h1>
-	<span class="post-date">@frontmatter.created</span>
+	<span class="post-date"><%= @frontmatter.created %></span>
 	<%= @content %>
 </div>

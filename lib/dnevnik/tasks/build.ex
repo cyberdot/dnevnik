@@ -8,7 +8,7 @@ defmodule Dnevnik.Tasks.Build do
 	Assets.copy     
 
     { :ok, store } = Store.start_link
-	
+		
 	Page.list |> Enum.each(&(Page.prepare(&1, store)))
     Post.list |> Enum.each(&(Post.prepare(&1, store)))
 		
