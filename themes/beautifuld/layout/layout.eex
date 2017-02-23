@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8"/>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+		<title><%= @config.name %></title>
+		<meta name="author" content="<%= @config.author %>"/>
+		<meta name="generator" content="Dnevnik 0.1.0"/>
+		<link href='assets/img/favicon.ico' rel='icon' type='image/x-icon'/>
+		<link rel="alternate" href="blog.rss" type="application/rss+xml" title="<%= @config.name %>">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css"/>
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic"/>
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800"/>
+		<%= @css %>
+		<meta property="og:title" content="<%= @config.name %>"/>
+		<meta property="og:type" content="website"/>
+		<meta property="og:url" content="<%= @config.url %>"/>
+		<meta property="og:image" content="assets/img/avatar-icon.png"/>
+	</head>
+	<body>
+		<nav class="navbar navbar-default navbar-fixed-top navbar-custom">
+			<div class="container-fluid">
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-navbar">
+						<span class="sr-only">Toggle navigation</span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+					<a class="navbar-brand" href="http://themes.gohugo.io/theme/beautifulhugo/">Beautiful Hugo</a>
+				</div>
+				<div class="collapse navbar-collapse" id="main-navbar">
+					<ul class="nav navbar-nav navbar-right">
+						<li><a title="Blog" href="<%= @config.url %>">Blog</a></li>
+						<li><a title="About" href="about.html">About</a></li>
+					</ul>
+				</div>
+				<div class="avatar-container">
+				<div class="avatar-img-border">
+					<a title="<%= @config.name %>" href="<%= @config.url %>">
+						<img class="avatar-img" src="assets/img/avatar-icon.png" alt="<%= @config.name %>"/>
+					</a>
+				</div>
+			</div>
+		</div>
+	</nav>
+	<header class="header-section">
+		<div class="intro-header no-img">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+						<div class="page-heading">
+							<h1><%= @config.name %></h1>
+							<hr class="small">
+							<span class="page-subheading"><%= @config.description %></span>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</header>
+	<%= @content %>
+<footer>
+<div class="container">
+<div class="row">
+<div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+<ul class="list-inline text-center footer-links">
+<li>
+<a href="https://www.facebook.com/username" title="Facebook">
+<span class="fa-stack fa-lg">
+<i class="fa fa-circle fa-stack-2x"></i>
+<i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
+</span>
+</a>
+</li>
+<li>
+<a href="https://github.com/username" title="GitHub">
+<span class="fa-stack fa-lg">
+<i class="fa fa-circle fa-stack-2x"></i>
+<i class="fa fa-github fa-stack-1x fa-inverse"></i>
+</span>
+</a>
+</li>
+<li>
+<a href="https://twitter.com/username" title="Twitter">
+<span class="fa-stack fa-lg">
+<i class="fa fa-circle fa-stack-2x"></i>
+<i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+</span>
+</a>
+</li>
+<li>
+<a href="/cdn-cgi/l/email-protection#433a2c3631262e222a2f03272c2e222a2d6d202c2e" title="Email me">
+<span class="fa-stack fa-lg">
+<i class="fa fa-circle fa-stack-2x"></i>
+<i class="fa fa-envelope fa-stack-1x fa-inverse"></i>
+</span>
+</a>
+</li>
+<li>
+<a href="https://linkedin.com/pub/username/X/YYY/ZZZ" title="LinkedIn">
+<span class="fa-stack fa-lg">
+<i class="fa fa-circle fa-stack-2x"></i>
+<i class="fa fa-linkedin fa-stack-1x fa-inverse"></i>
+</span>
+</a>
+</li>
+<li>
+<a href="https://stackoverflow.com/users/XXXXXXX/username" title="StackOverflow">
+<span class="fa-stack fa-lg">
+<i class="fa fa-circle fa-stack-2x"></i>
+<i class="fa fa-stack-overflow fa-stack-1x fa-inverse"></i>
+</span>
+</a>
+</li>
+<li>
+<a href="https://soundcloud.com/username" title="SoundCloud">
+<span class="fa-stack fa-lg">
+<i class="fa fa-circle fa-stack-2x"></i>
+<i class="fa fa-soundcloud fa-stack-1x fa-inverse"></i>
+</span>
+</a>
+</li>
+<li>
+<a href="https://wikipedia.org/wiki/User:username" title="Wikipedia">
+<span class="fa-stack fa-lg">
+<i class="fa fa-circle fa-stack-2x"></i>
+<i class="fa fa-wikipedia-w fa-stack-1x fa-inverse"></i>
+</span>
+</a>
+</li>
+<li>
+<a href="http://themes.gohugo.io/theme/beautifulhugo/index.xml" title="RSS">
+<span class="fa-stack fa-lg">
+<i class="fa fa-circle fa-stack-2x"></i>
+<i class="fa fa-rss fa-stack-1x fa-inverse"></i>
+</span>
+</a>
+</li>
+</ul>
+<p class="credits copyright text-muted">
+<%= @config.author %>
+&nbsp;&bull;&nbsp;
+2016
+&nbsp;&bull;&nbsp;
+<a href="<%= config.url %>"><%= @config.name %></a>
+</p>
+<p class="credits theme-by text-muted">
+<a href="http://github.com/cyberdot/dnevnik">Dnevnik v0.1.0</a> powered &nbsp;&bull;&nbsp; Theme by <a href="http://deanattali.com/beautiful-jekyll/">beautiful-jekyll</a> adapted to <a href="#">Beautiful D</a>
+</p>
+</div>
+</div>
+</div>
+</footer>
+<%= @js %>
+<script>
+  hljs.initHighlightingOnLoad();
+</script>
+</body>
+</html>
