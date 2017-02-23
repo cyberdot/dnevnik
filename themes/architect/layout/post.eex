@@ -1,0 +1,10 @@
+<div>
+	<h2><%= @frontmatter.title %></h2>
+	<p class="meta"><%= @frontmatter.created %></p>
+	<%= @content %>
+</div>
+
+
+<%= if @config.enable_disqus_comments do %>
+	<%= Dnevnik.DisqusComments.render(@path, @config.disqus_url) %>	 
+<% end %>

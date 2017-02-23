@@ -1,0 +1,12 @@
+<div id="home">
+  <h1>Blog Posts</h1>
+  <ul class="posts">
+    <%= Enum.map(@content, fn(post) -> %>
+      <li>
+		<span><%= post.frontmatter.created %></span> &raquo; 
+		<a href="<%= post.filename %>"><%= post.frontmatter.title %></a>
+		<div><%= post.excerpt %></div>
+	  </li>
+    <% end) %>
+  </ul>
+</div>
