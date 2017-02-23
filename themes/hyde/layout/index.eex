@@ -1,0 +1,33 @@
+<% {next_page, next_filename} = @next %>
+<% {prev_page, prev_filename} = @prev %>
+
+
+<%= Enum.map(@content, fn(post) -> %>
+
+<div class="posts">
+	<div class="post">
+		<h1 class="post-title">
+			<a href="<%= post.filename %>"> <%= post.frontmatter.title %></a>
+		</h1>
+		<span class="post-date"><%= post.frontmatter.created %></span>
+		<%= post.excerpt %>
+	</div>
+</div>
+
+<% end) %>
+
+<div class="extra-pagination inner">
+    <nav class="pagination" role="navigation">
+	<%= if prev_page > 0 do %>
+        <a class="newer-posts" href="/<%= prev_filename %>"><span aria-hidden="true">&larr;</span> Newer Posts</a>
+	<% end %>
+	<span class="page-number">
+		<%= if @current > 1 do %>
+			Page <%= @current %>
+		<% end %>
+	</span>
+	<%= if next_page > 0 do %>
+		<a class="older-posts" href="/<%= next_filename %>">Older Posts <span aria-hidden="true">&rarr;</span></a>
+	<% end %>
+	</nav>
+</div>

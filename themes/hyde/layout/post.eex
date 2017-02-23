@@ -1,0 +1,10 @@
+<div class="post">
+	<h1><%= @frontmatter.title %></h1>
+	<span class="post-date"><%= @frontmatter.created %></span>
+	<%= @content %>
+</div>
+
+<%= if @config.enable_disqus_comments do %>
+	<%= Dnevnik.DisqusComments.render(@path, @config.disqus_url) %>	 
+<% end %>
+
