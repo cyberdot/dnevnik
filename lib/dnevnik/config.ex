@@ -36,8 +36,10 @@ defmodule Dnevnik.Config do
       "posts_per_page": 10,
       "sort_posts": "ascending",
       "theme": "whisper",
+	  
+	  "github": "github_account_name",
 	  	  
-      "disqus_url": "cyberdot.disqus.com",
+      "disqus_url": "disqus_username.disqus.com",
       "enable_disqus_comments": true  
     }      
     """

@@ -37,7 +37,7 @@
 	}
     </script>
 
-    <meta name="generator" content="Xylograph-1.0" />
+    <meta name="generator" content="Dnevnik-1.0" />
     <link rel="alternate" type="application/rss+xml" title="<%= @config.name %>" href="<%= @config.url %>/blog.rss" />
 </head>
 <body class="home-template nav-closed">
@@ -47,7 +47,7 @@
 		<a href="#" class="nav-close"><span class="hidden">Close</span></a>
 		<ul>
 			<li class="nav-home" role="presentation"><a href="<%= @config.url %>">Home</a></li>
-			<li class="nav-github" role="presentation"><a href="http://github.com/cyberdot">GitHub</a></li>
+			<li class="nav-github" role="presentation"><a href="http://github.com/<%= @config.github %>">GitHub</a></li>
 		</ul>
 		<a class="subscribe-button icon-feed" href="<%= @config.url %>/blog.rss">Subscribe</a>
 	</div>
@@ -73,7 +73,7 @@
 
         <footer class="site-footer clearfix">
             <section class="copyright"><a href="<%= @config.url %>"><%= @config.name %></a> &copy; 2017</section>
-            <section class="poweredby">Proudly published with <a href="https://github.com/cyberdot/xylograph">Xylograph</a></section>
+            <section class="poweredby">Proudly published with <a href="https://github.com/cyberdot/dnevnik">Dnevnik</a></section>
         </footer>
 
     </div>

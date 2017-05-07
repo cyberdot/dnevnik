@@ -1,7 +1,10 @@
 defmodule Dnevnik.Page do
   alias Dnevnik.{Config, Assets, Document, Renderer, Store, Utils.IO, Utils.Date}
   
-  def init, do: File.mkdir pages_dir()
+  def init do
+	File.mkdir pages_dir()
+	create("About")
+  end
   
   def list, do: File.ls! pages_dir()
   

@@ -18,11 +18,11 @@
 	</section>
 	<footer class="post-footer">	
 		<figure class="author-image">
-			<a class="img" href="<%= @config.author %>.html" style="background-image: url(/assets/img/logo.png)"><span class="hidden">Author's Picture</span></a>
+			<a class="img" href="about.html" style="background-image: url(/assets/img/logo.png)"><span class="hidden">Author's Picture</span></a>
 		</figure>
 
 		<section class="author">
-			<h4><a href="<%= @config.author %>.html"><%= @config.author %></a></h4>
+			<h4><a href="about.html"><%= @config.author %></a></h4>
 
 			<p><%= @config.author_description %></p>
 			<div class="author-meta">

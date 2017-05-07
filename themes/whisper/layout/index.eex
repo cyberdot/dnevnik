@@ -29,7 +29,7 @@
 		</section>
 		<footer class="post-meta">
 			<img class="author-thumb" src="/assets/img/logo.png" alt="<%= @config.author %>" nopin="nopin" />
-			<a href="<%= @config.author %>.html"><%= @config.author %></a>
+			<a href="about.html"><%= @config.author %></a>
 			<%= if length(post.frontmatter.tags) > 0 do %>
 			    on
 				<%= Enum.map(post.frontmatter.tags, fn(tag) -> %>

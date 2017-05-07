@@ -1,7 +1,7 @@
 defmodule Dnevnik.Mixfile do
   use Mix.Project
 
-  def project do
+  def project() do
     [app: :Dnevnik,
      version: "0.1.0",
      elixir: "~> 1.0",
@@ -9,16 +9,16 @@ defmodule Dnevnik.Mixfile do
 	 package: package(),
 	 deps: deps(),
      description: """
-        Dnevnik is a static site generator for Elixir. It is a fork of obelisk static site generator.
+        Dnevnik is a static site generator written in Elixir. 
      """]
   end
 
-  def application do
+  def application() do
     [applications: [:cowboy, :plug, :chronos],
      mod: {Dnevnik, []}]
   end
 
-  defp deps do
+  defp deps() do
     [{:poison, "~> 3.0"},
      {:earmark, "~> 0.1.15"},
      {:chronos, "~> 1.0.0"},
@@ -29,7 +29,7 @@ defmodule Dnevnik.Mixfile do
      {:calliope, "~> 0.3.0"}]
   end
 
-  defp package do
+  defp package() do
     %{
       licenses: ["MIT"],
       contributors: ["CyberDot"],
