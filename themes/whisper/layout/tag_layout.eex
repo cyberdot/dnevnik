@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<base href="<%= @config.url %>" />
+
+
+    <title><%= @config.name %></title>
+    <meta name="description" content="<%= @config.description %>" />
+
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="shortcut icon" href="/favicon.ico">
+	
+	<%= @css %>
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Merriweather:300,700,700italic,300italic|Open+Sans:700,400" />
+
+    <link rel="canonical" href="<%= @config.url %>" />
+    <meta name="referrer" content="origin" />
+    <link rel="next" href="<%= @config.url %>/page/2/" />
+    
+    <meta property="og:site_name" content="<%= @config.name %>" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="<%= @config.name %>" />
+    <meta property="og:description" content="<%= @config.description %>" />
+    <meta property="og:url" content="<%= @config.url %>" />
+       
+    <script type="application/ld+json">
+	{
+		"@context": "http://schema.org",
+		"@type": "Website",
+		"publisher": "<%= @config.name %>",
+		"url": "<%= @config.url %>",
+		"description": "<%= @config.description %>"
+	}
+    </script>
+
+    <meta name="generator" content="Dnevnik-1.0" />
+    <link rel="alternate" type="application/rss+xml" title="<%= @config.name %>" href="<%= @config.url %>/blog.rss" />
+</head>
+<body class="home-template nav-closed">
+
+    <div class="nav">
+		<h3 class="nav-title">Menu</h3>
+		<a href="#" class="nav-close"><span class="hidden">Close</span></a>
+		<ul>
+			<li class="nav-home" role="presentation"><a href="<%= @config.url %>">Home</a></li>
+			<li class="nav-github" role="presentation"><a href="http://github.com/<%= @config.github %>">GitHub</a></li>
+		</ul>
+		<a class="subscribe-button icon-feed" href="<%= @config.url %>/blog.rss">Subscribe</a>
+	</div>
+	<span class="nav-cover"></span>
+
+    <div class="site-wrapper">
+		<header class="main-header no-cover">
+			<nav class="main-nav overlay clearfix">
+				<a class="menu-button icon-menu" href="#"><span class="word">Menu</span></a>
+			</nav>
+			<div class="vertical">
+				<div class="main-header-content inner">
+					<h1 class="page-title">Tag: <%= @tag %></h1>
+					<h2 class="page-description">tagged collection of posts</h2>
+				</div>
+			</div>
+			<a class="scroll-down icon-arrow-left" href="#content" data-offset="-45"><span class="hidden">Scroll Down</span></a>
+		</header>
+
+		<main id="content" class="content" role="main">
+			<%= @content %>			
+		</main>
+
+        <footer class="site-footer clearfix">
+            <section class="copyright"><a href="<%= @config.url %>"><%= @config.name %></a> &copy; 2017</section>
+            <section class="poweredby">Proudly published with <a href="https://github.com/cyberdot/dnevnik">Dnevnik</a></section>
+        </footer>
+
+    </div>
+
+    <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>  
+	<%= @js %>
+</body>
+</html>

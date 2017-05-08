@@ -15,7 +15,7 @@ defmodule Dnevnik.Tasks.Build do
     Document.write_all Store.get_pages(store)
     
 	posts = Store.get_posts(store)
-	posts |> Tags.prepare_using(store)
+	posts |> Tags.create(store)
 	posts |> Document.write_all
 	posts |> RSS.build_feed
     posts |> Index.create(store)

@@ -14,7 +14,8 @@ defmodule Dnevnik.Store do
         page:   Layout.page,
 		page_layout: Layout.page_layout,
         index:  Layout.index,
-		index_layout: Layout.index_layout
+		index_layout: Layout.index_layout,
+		tag_layout: Layout.tag_layout
       })      
       store
     end)
