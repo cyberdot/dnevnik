@@ -37,7 +37,9 @@
 				<% end) %>			
 			<% end %>			
 			
-			<time class="post-date" datetime="<%= post.frontmatter.created %>"> <%= post.frontmatter.created %></time> 
+			<time class="post-date" datetime="<%= post.frontmatter.created %>"> 
+				<%= Dnevnik.Utils.Date.formatted(post.frontmatter.created, @config.date_format) %>
+			</time> 
 		</footer>
 	</article>
  

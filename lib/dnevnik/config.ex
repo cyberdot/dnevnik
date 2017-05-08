@@ -36,6 +36,7 @@ defmodule Dnevnik.Config do
       "posts_per_page": 10,
       "sort_posts": "ascending",
       "theme": "whisper",
+	  "date_format": "%d %b %Y %H:%M:%S",
 	  
 	  "github": "github_account_name",
 	  	  

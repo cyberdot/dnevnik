@@ -3,7 +3,9 @@
 	<header class="post-header">
         <h1 class="post-title"><%= @frontmatter.title %></h1>
         <section class="post-meta">
-            <time class="post-date"><%= @frontmatter.created %></time>  
+            <time class="post-date">
+				<%= Dnevnik.Utils.Date.formatted(@frontmatter.created, @config.date_format) %>
+			</time>  
 			<%= if length(@frontmatter.tags) > 0 do %>
 			on
 				<%= Enum.map(@frontmatter.tags, fn(tag) -> %>

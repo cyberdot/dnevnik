@@ -20,7 +20,7 @@ defmodule Dnevnik.Tags do
   end
   
   defp update_config(config, tag) do
-	Map.update(config, :name tag, fn _ -> "Tag: #{tag}" end) 
+	Map.update(config, :name, tag, fn _ -> "Tag: #{tag}" end) 
 		|> Map.update(:description, "tagged collection of posts", fn _ -> "tagged collection of posts" end)
 		|> Map.update(:blog_index, "tags/#{tag}.html", fn _ -> "tags/#{tag}.html" end)	
   end
