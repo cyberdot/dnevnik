@@ -1,7 +1,9 @@
 <article class="post-container post-container--single">
 	<header class="post-header">
 		<div class="post-meta">
-			<time datetime="<%= @frontmatter.created %>" class="post-meta__date date">Posted on <%= @frontmatter.created %>.</time> &#8226;			
+			<time datetime="<%= @frontmatter.created %>" class="post-meta__date date">
+				Posted on <%= Dnevnik.Utils.Date.formatted(@frontmatter.created, @config.date_format) %>.
+			</time> 
 		</div>
 		<h1 class="post-title"><%= @frontmatter.title %></h1>
 	</header>

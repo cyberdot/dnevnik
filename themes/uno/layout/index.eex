@@ -16,7 +16,7 @@
 			</p>
 			<div class="post-list__meta">
 			  <time datetime="<%= post.frontmatter.created %>" class="post-list__meta--date date">
-				Posted <%= post.frontmatter.created %>
+				Posted <%= Dnevnik.Utils.Date.formatted(post.frontmatter.created, @config.date_format) %>
 			  </time>&#8226; 
 			  <%= if length(post.frontmatter.tags) > 0 do %>
 			  <span class="post-meta__tags">Tags: 

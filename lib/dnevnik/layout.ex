@@ -14,7 +14,7 @@ defmodule Dnevnik.Layout do
   def index, do: load "index"
   def index_layout, do: resolve_layout "index_layout"
   
-  def tag_layout, do: load "tag_layout"  
+  def tag_layout, do: resolve_layout "tag_layout"  
   
   defp resolve_layout(template), do: load template, "layout"
   
