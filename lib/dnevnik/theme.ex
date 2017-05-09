@@ -2,8 +2,9 @@ defmodule Dnevnik.Theme do
    alias Dnevnik.{Config, Errors, Utils.Git, Utils.IO}
    
   def init do
+   themes_dir = IO.resolve("themes")
    File.mkdir "#{Config.content_directory}/themes"
-   File.cp_r IO.resolve("themes"), "#{Config.content_directory}/themes"
+   File.cp_r themes_dir, "#{Config.content_directory}/themes"
   end
     
   def ensure, do: Config.data |> Map.get(:theme) |> String.split("/") |> _ensure  

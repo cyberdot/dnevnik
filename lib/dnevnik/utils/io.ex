@@ -12,7 +12,7 @@ defmodule Dnevnik.Utils.IO do
 	def resolve resource do
 		case File.exists?("./" <> resource) do
 			true -> "./" <> resource
-			false -> "./deps/dnevnik" <> resource
+			false -> "./deps/dnevnik/" <> resource
 		end
 	end
 end
