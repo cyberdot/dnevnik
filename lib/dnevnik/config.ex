@@ -35,10 +35,13 @@ defmodule Dnevnik.Config do
       "language": "en-gb",
       "posts_per_page": 10,
       "sort_posts": "ascending",
-      "theme": "uno",
+      "theme": "hyde",
 	  "date_format": "%d %b %Y %H:%M:%S",
 	  
 	  "github": "github_account_name",
+	  "twitter": "twitter_account_name",
+	  "linked_in": "linked_in_account_name",
+	  "email": "user_email@email-provider.com",
 	  	  
       "disqus_url": "disqus_username.disqus.com",
       "enable_disqus_comments": true  

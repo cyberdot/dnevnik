@@ -1,6 +1,8 @@
 <div class="post-header mb2">
 	<h1 class="py2"><%= @frontmatter.title %></h1>
-	<span class="post-meta"><%= @frontmatter.created %> by <%= @config.author %></span><br>
+	<span class="post-meta">
+		<%= Dnevnik.Utils.Date.formatted(@frontmatter.created, @config.date_format) %> by <%= @config.author %>
+	</span><br>
 </div>
 <article class="post-content"> 
 	<%= @content %>

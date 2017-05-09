@@ -54,7 +54,7 @@ defmodule Dnevnik.Tags do
   end
   
   defp create_layout_view_model(content, config, tag) do
-	[ config: config, js: Assets.js, css: Assets.css, content: content, tag: tag]
+	[ config: config, js: Assets.js, css: Assets.css, content: content, tag: tag, path: "", filename: ""]
   end
   
   def html_filename(page_num, config) do

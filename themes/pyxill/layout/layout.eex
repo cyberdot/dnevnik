@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title><%= @frontmatter.title %></title>
+	<title><%= @config.name %></title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="description" content="<%= @config.description %>">
 	<meta name="author" content="<%= @config.author %>">
@@ -16,11 +16,11 @@
 		<header class="site-header px2 px-responsive">
 			<div class="mt2 wrap">
 				<div class="measure">
-					<a href="<%= @filename %>" class="site-title"><%= @frontmatter.title %></a>
+					<a href="<%= @filename %>" class="site-title"><%= @config.name %></a>
 					<nav class="site-nav right">
 						<a href="about.html">About</a>
 						<a href="tags.html">Tags</a>
-						<a href="mailto:contact@bla.com">Contact</a>
+						<a href="mailto:<%= @config.email %>">Contact</a>
 					</nav>
 					<div class="clearfix"></div>
 				</div>
