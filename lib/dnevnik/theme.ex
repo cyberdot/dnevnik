@@ -3,7 +3,7 @@ defmodule Dnevnik.Theme do
    
   def init do
    File.mkdir "#{Config.content_directory}/themes"
-   File.cp_r IO.resolve "themes", "#{Config.content_directory}/themes"
+   File.cp_r IO.resolve("themes"), "#{Config.content_directory}/themes"
   end
     
   def ensure, do: Config.data |> Map.get(:theme) |> String.split("/") |> _ensure  
