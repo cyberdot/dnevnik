@@ -28,7 +28,7 @@ defmodule Dnevnik.Site do
   end
   
   defp copy_root_files do
-    File.cp IO.resolve "robots.txt", "#{Config.content_directory}/robots.txt"
-    File.cp IO.resolve "CNAME", "#{Config.content_directory}/CNAME"
+    File.cp IO.resolve("robots.txt"), "#{Config.content_directory}/robots.txt"
+    File.cp IO.resolve("CNAME"), "#{Config.content_directory}/CNAME"
   end
 end
