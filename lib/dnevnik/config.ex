@@ -35,8 +35,8 @@ defmodule Dnevnik.Config do
       "language": "en-gb",
       "posts_per_page": 10,
       "sort_posts": "ascending",
-      "theme": "hyde",
-	  "date_format": "%d %b %Y %H:%M:%S",
+      "theme": "poole",
+	  "date_format": "%d %b %Y",
 	  
 	  "github": "github_account_name",
 	  "twitter": "twitter_account_name",

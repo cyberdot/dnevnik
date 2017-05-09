@@ -144,7 +144,7 @@
 &nbsp;&bull;&nbsp;
 2016
 &nbsp;&bull;&nbsp;
-<a href="<%= config.url %>"><%= @config.name %></a>
+<a href="<%= @config.url %>"><%= @config.name %></a>
 </p>
 <p class="credits theme-by text-muted">
 <a href="http://github.com/cyberdot/dnevnik">Dnevnik v0.1.0</a> powered &nbsp;&bull;&nbsp; Theme by <a href="http://deanattali.com/beautiful-jekyll/">beautiful-jekyll</a> adapted to <a href="#">Beautiful D</a>

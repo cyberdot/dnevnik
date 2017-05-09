@@ -5,21 +5,40 @@ defmodule Dnevnik.Tags do
     File.rm_rf "#{Config.public_directory}/tags"
 	File.mkdir "#{Config.public_directory}/tags"
 	
-    posts 
+    tags = posts 
 		|> Enum.map(fn(post) -> post.frontmatter.tags end) 
 		|> List.flatten 
 		|> Enum.uniq 
-		|> Enum.each(&render_posts_per_tag(&1,posts, store))	
+		|> Enum.sort
+	
+	tags |> create_tags_index_page(store)
+	tags |> Enum.each(&render_posts_per_tag(&1,posts, store))	
   end
   
-  def render_posts_per_tag(tag, posts, store) do
+  defp create_tags_index_page(tags, store) do
+	templates = Store.get_layouts(store)
+	
+	{ layout, layout_renderer } = templates.layout
+    { index, index_renderer } = templates.tag_index
+		
+	index_view = Renderer.render(index, [ content: tags ], index_renderer)
+	layout_model = [ 
+		config: Config.data, 
+		content: index_view, 
+		filename: "index.html",
+		css: Assets.css
+	]
+	File.write(Config.public_directory <> "/tags/index.html", Renderer.render(layout, layout_model, layout_renderer))
+  end
+  
+  defp render_posts_per_tag(tag, posts, store) do
     config = Config.data |> Map.update(:blog_index, "tags/#{tag}.html", fn _ -> "tags/#{tag}.html" end)
     posts 
 		|> Enum.filter(fn(post) -> Enum.any?(post.frontmatter.tags, &(&1 == tag)) end) 
 		|> create_index_per_tag(tag, store, config)
   end 
   
-  def create_index_per_tag(posts, tag, store, config \\ Config.data) do
+  defp create_index_per_tag(posts, tag, store, config) do
 	posts |> Posts.sort_by_date |> compile_index(tag, store, config)
   end
     

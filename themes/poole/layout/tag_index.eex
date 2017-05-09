@@ -1,0 +1,8 @@
+<div class="page">
+	<h1 class="page-title">Tags</h1>
+	<div class="tags">
+	 <%= Enum.map(@content, fn(tag) -> %>
+		<a class="round tag-cloud" href="/tags/<%= tag %>.html"><%= tag %></a>
+	 <% end) %> 	
+	</div>
+</div>

@@ -1,0 +1,30 @@
+<% {next_page, next_filename} = @next %>
+<% {prev_page, prev_filename} = @prev %>
+
+<div class="posts">
+  <%= Enum.map(@content, fn(post) -> %>
+  <div class="post">
+	<h3 class="post-title">
+	  <a href="<%= post.filename %>"><%= post.frontmatter.title %></a>
+	</h3>
+	<span class="post-date">
+		<%= Dnevnik.Utils.Date.formatted(post.frontmatter.created, @config.date_format) %> 
+	</span>
+	<p><%= post.excerpt %><a class="read-more" href="<%= post.filename %>">&raquo;</a></p>
+  </div>
+  <% end) %>  
+</div>
+
+<div class="pagination">
+    <%= if prev_page > 0 do %>
+		<a class="pagination-item older" href="<%= prev_filename %>">Older</a>
+	<% else %>
+		<span class="pagination-item older">Older</span>
+	<% end %>
+	
+	<%= if next_page > 0 do %>
+		<a class="pagination-item newer" href="<%= next_filename %>">Newer</a>
+	<% else %>
+		<span class="pagination-item newer">Newer</span>
+	<% end %>
+</div>	

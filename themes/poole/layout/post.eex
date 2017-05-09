@@ -1,0 +1,22 @@
+
+<div class="post">
+	<h1 class="post-title"><%= @frontmatter.title %></h1>
+	<span class="post-date"><%= Dnevnik.Utils.Date.formatted(@frontmatter.created, @config.date_format) %></span>
+    <%= @content %>
+</div>
+
+<%= if length(@frontmatter.tags) > 0 do %>
+<div class="tags">
+	<h2 style="display:inline;">Tags:</h2>
+	
+		<%= Enum.map(@frontmatter.tags, fn(tag) -> %>
+		<a href="/tags/<%= tag %>.html" class="round tag-cloud"><%= tag %></a>
+		<% end) %>
+	</div>
+<% end %>
+
+<div class="comments" style="margin-top: 20px">
+<%= if @config.enable_disqus_comments do %>
+	<%= Dnevnik.DisqusComments.render(@path, @config.disqus_url) %>	 
+<% end %>
+</div>
