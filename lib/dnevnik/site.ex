@@ -28,7 +28,7 @@ defmodule Dnevnik.Site do
   end
   
   defp copy_root_files do
-    File.cp "robots.txt", "#{Config.content_directory}/robots.txt"
-    File.cp "CNAME", "#{Config.content_directory}/CNAME"
+    File.cp "./deps/dnevnik/robots.txt", "#{Config.content_directory}/robots.txt"
+    File.cp "./deps/dnevnik/CNAME", "#{Config.content_directory}/CNAME"
   end
 end
