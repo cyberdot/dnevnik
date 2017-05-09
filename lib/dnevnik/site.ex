@@ -1,5 +1,5 @@
 defmodule Dnevnik.Site do
-  alias Dnevnik.{Config, Theme, Draft, Page, Post}
+  alias Dnevnik.{Config, Theme, Draft, Page, Post, Utils.IO}
   
   def initialize do
     clean()
@@ -28,7 +28,7 @@ defmodule Dnevnik.Site do
   end
   
   defp copy_root_files do
-    File.cp "./deps/dnevnik/robots.txt", "#{Config.content_directory}/robots.txt"
-    File.cp "./deps/dnevnik/CNAME", "#{Config.content_directory}/CNAME"
+    File.cp IO.resolve "robots.txt", "#{Config.content_directory}/robots.txt"
+    File.cp IO.resolve "CNAME", "#{Config.content_directory}/CNAME"
   end
 end

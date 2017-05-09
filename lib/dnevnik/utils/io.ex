@@ -8,4 +8,11 @@ defmodule Dnevnik.Utils.IO do
 	end
 	
 	def url_slug_from_title(title), do: title |> String.downcase |> String.replace(" ", "-")	
+	
+	def resolve resource do
+		case File.exists?("./" <> resource) do
+			true -> "./" <> resource
+			false -> "./deps/dnevnik" <> resource
+		end
+	end
 end
