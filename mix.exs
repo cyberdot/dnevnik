@@ -2,7 +2,7 @@ defmodule Dnevnik.Mixfile do
   use Mix.Project
 
   def project() do
-    [app: :Dnevnik,
+    [app: :dnevnik,
      version: "0.1.0",
      elixir: "~> 1.0",
      docs: [readme: true, main: "README.md"],
