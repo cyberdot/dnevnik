@@ -35,7 +35,15 @@ defmodule Dnevnik.Page do
   end
   
   defp layout_view_model(content, frontmatter, path, filename) do
-	[ config: Config.data, js: Assets.js, css: Assets.css, content: content, frontmatter: frontmatter, path: path, filename: filename ]
+	[ 
+		config: Config.data, 
+		js: Assets.js, 
+		css: Assets.css, 
+		content: content, 
+		frontmatter: frontmatter, 
+		path: path, 
+		filename: filename 
+	]
   end
   
   def default(title) do

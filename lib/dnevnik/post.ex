@@ -23,16 +23,17 @@ defmodule Dnevnik.Post do
   defp prepare_page(layouts, md_file) do
 	{ frontmatter, md_content } =  md_file |> File.read! |> Document.split_into_parts 
 	
+	content = Earmark.to_html(md_content)
 	filename = Document.file_name(md_file)
 	html_path = Document.html_filename(md_file)
-	excerpt = Document.create_excerpt(md_content)
+	excerpt = Document.create_excerpt(content)
 	
 	{page_layout, page_renderer} = layouts.post
 	{layout_template, layout_renderer} = layouts.post_layout
 	
 	content = Renderer.render(page_layout, [ 
 			config: Config.data, 
-			content: Earmark.to_html(md_content), 
+			content: content, 
 			frontmatter: frontmatter, 
 			filename: filename, 
 			path: html_path 
