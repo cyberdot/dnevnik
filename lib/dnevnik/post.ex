@@ -70,7 +70,7 @@ defmodule Dnevnik.Post do
 		"description": "A new blog post",
 		"created": "#{Dnevnik.Utils.Date.today}",
 		"tags": ["post", "new"],
-		"slug": "#{IO.url_slug_from_title(title)}"
+		"slug": "#{IO.url_slug(title)}"
 	}
 	
    

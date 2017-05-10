@@ -53,7 +53,7 @@ defmodule Dnevnik.Page do
 	  "description": "A new page", 
 	  "created": "#{Date.today}", 
 	  "tags": ["page", "new"], 
-	  "slug": "#{IO.url_slug_from_title(title)}"
+	  "slug": "#{IO.url_slug(title)}"
 	}
 
     Welcome to your brand new page.

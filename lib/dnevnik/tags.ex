@@ -1,5 +1,5 @@
 defmodule Dnevnik.Tags do
-  alias Dnevnik.{Config, Posts, IndexPager, Store, Renderer, Assets}
+  alias Dnevnik.{Config, Posts, IndexPager, Store, Renderer, Assets, Utils.IO}
 	
   def create(posts, store) do
     File.rm_rf "#{Config.public_directory}/tags"
@@ -32,7 +32,8 @@ defmodule Dnevnik.Tags do
   end
   
   defp render_posts_per_tag(tag, posts, store) do
-    config = Config.data |> Map.update(:blog_index, "tags/#{tag}.html", fn _ -> "tags/#{tag}.html" end)
+    tag_slug = IO.url_slug(tag)
+    config = Config.data |> Map.update(:blog_index, "tags/#{tag_slug}.html", fn _ -> "tags/#{tag_slug}.html" end)
     posts 
 		|> Enum.filter(fn(post) -> Enum.any?(post.frontmatter.tags, &(&1 == tag)) end) 
 		|> create_index_per_tag(tag, store, config)

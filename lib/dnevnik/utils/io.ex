@@ -7,7 +7,7 @@ defmodule Dnevnik.Utils.IO do
 			  |> (fn(title_part) -> "#{directory}/#{title_part}.markdown" end).()
 	end
 	
-	def url_slug_from_title(title), do: title |> String.downcase |> String.replace(" ", "-")	
+	def url_slug(title), do: title |> String.downcase |> String.replace(" ", "-")	
 	
 	def resolve resource do
 		case File.exists?("./" <> resource) do
