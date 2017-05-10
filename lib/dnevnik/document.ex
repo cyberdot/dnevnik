@@ -16,7 +16,8 @@ defmodule Dnevnik.Document do
   end
   
   def create_excerpt(content) do
-	content |> String.slice(0 .. 100)
-  end
+	slice = content |> String.slice(0 .. 1000) 
+	slice <> " ..."
+ end
 
 end
