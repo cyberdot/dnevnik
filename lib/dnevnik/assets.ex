@@ -22,7 +22,7 @@ defmodule Dnevnik.Assets do
 	end
   end
 
-  @spec css_files() :: list 
+  @spec css_files(css_dir :: String.t) :: list 
   defp css_files(css_dir) do
     File.ls!(css_dir)
     |> Enum.sort
@@ -30,7 +30,7 @@ defmodule Dnevnik.Assets do
     |> Enum.filter(&(!File.dir? "#{Config.public_directory}/#{&1}"))
   end
 
-  @spec js_files() :: list
+  @spec js_files(js_dir :: String.t) :: list
   defp js_files(js_dir) do
     File.ls!(js_dir)
     |> Enum.sort
