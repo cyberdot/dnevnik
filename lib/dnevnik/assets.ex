@@ -2,7 +2,7 @@ defmodule Dnevnik.Assets do
   alias Dnevnik.{Theme, Config}
   
   @spec copy() :: { :ok, [binary]} | {:error, :file.posix, binary}
-  def copy, do: File.cp_r("#{Config.content_directory}/themes/#{Theme.current}/assets", "#{Config.public_directory}/assets")
+  def copy, do: File.cp_r("./themes/#{Theme.current}/assets", "#{Config.public_directory}/assets")
   
   @spec css() :: String.t
   def css do

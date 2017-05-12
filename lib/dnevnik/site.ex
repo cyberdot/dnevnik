@@ -15,20 +15,17 @@ defmodule Dnevnik.Site do
 	File.rm_rf "#{Config.public_directory}"
 	File.mkdir "#{Config.public_directory}"
 	
-	File.cp "#{Config.content_directory}/robots.txt", "#{Config.public_directory}/robots.txt"
-	File.cp "#{Config.content_directory}/CNAME", "#{Config.public_directory}/CNAME"
+	File.cp "./robots.txt", "#{Config.public_directory}/robots.txt"
+	File.cp "./CNAME", "#{Config.public_directory}/CNAME"
   end
 
   def clean do
-    File.rm_rf "#{Config.content_directory}"
-    File.mkdir "#{Config.content_directory}"
-	
-	File.rm_rf "#{Config.public_directory}"
+    File.rm_rf "#{Config.public_directory}"
     File.mkdir "#{Config.public_directory}"
   end
   
   defp copy_root_files do
-    File.cp IO.resolve("robots.txt"), "#{Config.content_directory}/robots.txt"
-    File.cp IO.resolve("CNAME"), "#{Config.content_directory}/CNAME"
+    File.cp IO.resolve("robots.txt"), "./robots.txt"
+    File.cp IO.resolve("CNAME"), "./CNAME"
   end
 end

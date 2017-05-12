@@ -14,7 +14,7 @@ defmodule Dnevnik.Page do
     store |> Store.add_pages([ prepare_page("#{pages_dir()}/#{md_file}", Store.get_layouts(store)) ])
   end
   
-  defp pages_dir, do: "#{Config.content_directory}/pages"
+  defp pages_dir, do: "./pages"
 
   defp prepare_page(file_path, layouts) do
 	{ layout_template, layout_renderer } = layouts.page_layout
