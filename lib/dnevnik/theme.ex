@@ -3,9 +3,8 @@ defmodule Dnevnik.Theme do
    
   def init do
    themes_dir = IO.resolve("themes")
-   if themes_dir !== "./themes" do
-	  File.cp_r themes_dir, "./themes"
-   end
+   File.mkdir "#{Config.content_directory}/themes"
+   File.cp_r themes_dir, "#{Config.content_directory}/themes"
   end
     
   def ensure, do: Config.data |> Map.get(:theme) |> String.split("/") |> _ensure  
@@ -15,8 +14,8 @@ defmodule Dnevnik.Theme do
   defp _current([_user, repo]), do: repo
   defp _current(url), do: url |> Enum.reverse |> hd |> String.replace("\.git", "")
 
-  defp _ensure([local]), do: ensure_local(File.dir?("./themes/#{local}"), local)
-  defp _ensure([user, repo]), do: ensure_github(File.dir?("./themes/#{repo}"), user, repo)
+  defp _ensure([local]), do: ensure_local(File.dir?("#{Config.content_directory}/themes/#{local}"), local)
+  defp _ensure([user, repo]), do: ensure_github(File.dir?("#{Config.content_directory}/themes/#{repo}"), user, repo)
   defp _ensure(url), do: ensure_url(url)
 
   defp ensure_local(true, _theme), do: true
@@ -31,7 +30,7 @@ defmodule Dnevnik.Theme do
     |> hd
     |> String.replace("\.git", "")
 
-    _ensure_url(File.dir?("./themes/#{repo}"), Enum.join(url, "/"))
+    _ensure_url(File.dir?("#{Config.content_directory}/themes/#{repo}"), Enum.join(url, "/"))
   end
 
   def _ensure_url(true, _url), do: true

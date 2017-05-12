@@ -2,21 +2,21 @@ defmodule Dnevnik.Post do
   alias Dnevnik.{Config, Document, Assets, Store, Renderer, Utils.IO, Utils.Date}
     
   def init do
-	File.mkdir "./posts"
+	File.mkdir "#{Config.content_directory}/posts"
 	create("Welcome to Dnevnik")
   end
   
-  def list, do: File.ls!("./posts") |> Enum.sort |> Enum.reverse
+  def list, do: File.ls!("#{Config.content_directory}/posts") |> Enum.sort |> Enum.reverse
     
   def create(title, is_draft \\ false) do
 	case is_draft do
-		true -> "./drafts"
-		false -> "./posts"
+		true -> "#{Config.content_directory}/drafts"
+		false -> "#{Config.content_directory}/posts"
 	end |> IO.filename_from_title(title) |> File.write(default(title))
   end
    
   def prepare(md_file, store) do
-    post = store |> Store.get_layouts |> prepare_page("./posts/#{md_file}")
+    post = store |> Store.get_layouts |> prepare_page("#{Config.content_directory}/posts/#{md_file}")
 	Store.add_posts(store, [post])
   end
   

@@ -1,7 +1,7 @@
 defmodule Dnevnik.Layout do
   alias Dnevnik.{Theme, Config}
 
-  def path, do: "./themes/#{Theme.current}/layout/layout.eex"
+  def path, do: "#{Config.content_directory}/themes/#{Theme.current}/layout/layout.eex"
   
   def layout, do: load "layout"
   
@@ -24,7 +24,7 @@ defmodule Dnevnik.Layout do
 	filep |> read(fallback) |> determine_renderer
   end
   
-  defp base_path, do: "./themes/#{Theme.current}/layout"
+  defp base_path, do: "#{Config.content_directory}/themes/#{Theme.current}/layout"
 
   defp to_path(nil), do: nil
   defp to_path(filename), do: base_path() <> "/" <> filename
