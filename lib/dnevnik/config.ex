@@ -1,6 +1,6 @@
 defmodule Dnevnik.Config do
     
-  @content_directory "./_content"
+  @content_directory "./_workspace"
   @public_directory "./_public"
   @config_file "config.json"
   
