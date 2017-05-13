@@ -10,9 +10,7 @@ defmodule Dnevnik.Tags do
 		|> List.flatten 
 		|> Enum.uniq 
 		|> Enum.sort
-		
-	Store.add_tags(store, tags)
-	
+			
 	tags |> create_tags_index_page(store)
 	tags |> Enum.each(&render_posts_per_tag(&1,posts, store))	
   end

@@ -20,7 +20,7 @@ defmodule Dnevnik.Tasks.Build do
 	posts |> RSS.build_feed
     posts |> Index.create(store)
 	
-	Sitemap.create({posts, Store.get_pages(store), Store.get_tags(store)})
+	Sitemap.create()
   end
 
 end

@@ -2,32 +2,21 @@ defmodule Dnevnik.Sitemap do
 	alias Dnevnik.{Config}
 	import XmlBuilder
 	
-	def create(items) do
-		items 
-		|> generate_posts
-		|> generate_pages
-		|> generate_tags
-		|> to_xml_string
-		|> write_to_file
+	def create() do
+		get_html_files() |> generate_xml |> write_to_file
 	end
 	
-	defp generate_posts({posts, pages, tags}) do
-	    posts_xml = posts |> Enum.map(fn(p) -> {:url, nil, [{:loc, nil, "#{Config.data.url}/#{p.filename}"}]} end)
-		{pages, tags, posts_xml}
+	defp get_html_files() do
+	    html_filter = fn(e) -> String.ends_with?(e, ".html") end
+		root_files = Enum.filter(File.ls!(Config.public_directory), html_filter)
+		tags_files = Enum.filter_map(File.ls!("#{Config.public_directory}/tags"), html_filter, &("tags/#{&1}"))
+		
+		root_files ++ tags_files 		
 	end
-	
-	defp generate_pages({pages, tags, posts_xml}) do
-		pages_xml = pages |> Enum.map(fn(p) -> {:url, nil, [{:loc, nil, "#{Config.data.url}/#{p.filename}"}]} end)
-		{tags, posts_xml, pages_xml}
-	end
-	
-	defp generate_tags({tags, posts_xml, pages_xml}) do
-		tags_xml = tags |> Enum.map(fn(t) -> {:url, nil, [{:loc, nil, "#{Config.data.url}/tags/#{t}.html"}]} end)
-		{posts_xml, pages_xml, [{:url,nil, [{:loc, nil, "#{Config.data.url}/tags/index.html"}] ++ tags_xml}]}
-	end
-	
-	defp to_xml_string({posts, pages, tags}) do
-	   {:urlset, %{xmlns: "http://www.sitemaps.org/schemas/sitemap/0.9"}, posts ++ pages ++ tags}
+		
+	defp generate_xml(entries) do
+	   elements = entries |> Enum.map(fn(e) -> {:url, nil, [{:loc, nil, "#{Config.data.url}/#{e}"}]} end)
+	   {:urlset, %{xmlns: "http://www.sitemaps.org/schemas/sitemap/0.9"}, elements}
 	   |> doc
 	   |> generate	   
 	end

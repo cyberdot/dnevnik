@@ -7,7 +7,6 @@ defmodule Dnevnik.Store do
       store = Map.new
       store = Map.put(store, :posts, [])
       store = Map.put(store, :pages, [])
-	  store = Map.put(store, :tags, [])
 	  store = Map.put(store, :layouts, %{
         layout: Layout.layout,
         post:   Layout.post,
@@ -44,13 +43,4 @@ defmodule Dnevnik.Store do
   def get_layouts(store) do
     Agent.get(store, &Map.get(&1, :layouts))
   end 
-  
-  def add_tags(store, tags) do
-    current = Agent.get(store, &Map.get(&1, :tags))
-	Agent.update(store, &Map.put(&1, :tags, current ++ tags))
-  end
-  
-  def get_tags(store) do
-	Agent.get(store, &Map.get(&1, :tags))
-  end
 end
