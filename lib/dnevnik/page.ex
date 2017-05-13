@@ -27,7 +27,7 @@ defmodule Dnevnik.Page do
 	content = Renderer.render(page_template, page_view_model(content, frontmatter, filename), page_renderer)
 	document = Renderer.render(layout_template, layout_view_model(content, frontmatter, path, filename), layout_renderer)
 	
-	%{ document: document, path: path }
+	%{ document: document, path: path, filename: filename }
   end  
   
   defp page_view_model(content, frontmatter, filename) do

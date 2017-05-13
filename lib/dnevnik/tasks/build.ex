@@ -1,5 +1,5 @@
 defmodule Dnevnik.Tasks.Build do
-  alias Dnevnik.{Site, Theme, Assets, Tags, Page, Post, Document, RSS, Index, Store}
+  alias Dnevnik.{Site, Theme, Assets, Tags, Page, Post, Document, RSS, Index, Store, Sitemap}
   
   def run(_) do
     Dnevnik.start(nil, nil)
@@ -19,6 +19,8 @@ defmodule Dnevnik.Tasks.Build do
 	posts |> Document.write_all
 	posts |> RSS.build_feed
     posts |> Index.create(store)
+	
+	Sitemap.create({posts, Store.get_pages(store), Store.get_tags(store)})
   end
 
 end
