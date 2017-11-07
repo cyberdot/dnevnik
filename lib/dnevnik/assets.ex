@@ -1,3 +1,4 @@
+
 defmodule Dnevnik.Assets do
   alias Dnevnik.{Theme, Config}
   
@@ -24,17 +25,21 @@ defmodule Dnevnik.Assets do
 
   @spec css_files(css_dir :: String.t) :: list 
   defp css_files(css_dir) do
-    File.ls!(css_dir)
-    |> Enum.sort
-    |> Enum.map(&("assets/css/#{&1}"))
-    |> Enum.filter(&(!File.dir? "#{Config.public_directory}/#{&1}"))
+    {status, data} = File.ls(css_dir)
+    if status == :ok do
+      data |> Enum.sort
+           |> Enum.map(&("assets/css/#{&1}"))
+           |> Enum.filter(&(!File.dir? "#{Config.public_directory}/#{&1}"))
+    end
   end
 
   @spec js_files(js_dir :: String.t) :: list
   defp js_files(js_dir) do
-    File.ls!(js_dir)
-    |> Enum.sort
-    |> Enum.map(&("assets/js/#{&1}"))
-    |> Enum.filter(&(!File.dir? "#{Config.public_directory}/#{&1}"))
+    {status, data} = File.ls(js_dir)
+    if status == :ok do
+      data |> Enum.sort
+           |> Enum.map(&("assets/js/#{&1}"))
+           |> Enum.filter(&(!File.dir? "#{Config.public_directory}/#{&1}"))
+    end
   end
 end
