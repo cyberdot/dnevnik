@@ -10,7 +10,7 @@
 	<h2 style="display:inline;">Tags:</h2>
 	
 		<%= Enum.map(@frontmatter.tags, fn(tag) -> %>
-		<a href="/tags/<%= tag %>.html" class="round tag-cloud"><%= tag %></a>
+		<a href="/tags/<%= Dnevnik.Utils.IO.url_slug(tag) %>.html" class="round tag-cloud"><%= tag %></a>
 		<% end) %>
 	</div>
 <% end %>
