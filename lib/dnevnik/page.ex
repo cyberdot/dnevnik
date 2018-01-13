@@ -20,7 +20,7 @@ defmodule Dnevnik.Page do
 	{ layout_template, layout_renderer } = layouts.page_layout
 	{ page_template, page_renderer} = layouts.page
 	{ frontmatter, content } =  file_path |> File.read! |> Document.split_into_parts 
-	
+		
 	filename = Document.file_name(file_path)
 	path = Document.html_filename(file_path)
 	

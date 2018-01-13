@@ -11,8 +11,8 @@ defmodule Dnevnik.Document do
   def html_filename(md), do: "#{Config.public_directory}/#{file_name(md)}"
     
   def split_into_parts(page_content) do
-    [frontmatter|content] = String.split page_content, "\n}\n"
-	{ Poison.Parser.parse!(String.trim(frontmatter <> "\n}\n"), keys: :atoms), Enum.join(content, "\n") }
+    [frontmatter|content] = String.split(page_content, "}", parts: 2)
+	{ Poison.Parser.parse!(String.trim(frontmatter <> "}"), keys: :atoms), Enum.join(content, "\n") }
   end
   
   def create_excerpt(content) do
